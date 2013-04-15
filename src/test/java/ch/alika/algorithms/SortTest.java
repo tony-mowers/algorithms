@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class SortTest {
-	private Comparator<Integer> direction = new AscendingComparator();
+	private Comparator<Integer> ascending = new IsLessThan();
 
 	@Before
 	public void setUp() throws Exception {
@@ -19,24 +19,24 @@ public class SortTest {
 	@Test
 	public void testInsertionSort() {
 		Integer a[] = {4,8,7,8,9, 20, 1, -1, -50, 90, 100};
-		Integer expected[] = expected(a, direction);
-		Sort.insertionSort(a, direction);
+		Integer expected[] = expected(a, ascending);
+		Sort.insertionSort(a, ascending);
 		assertArrayEquals(expected, a);
 	}
 
 	@Test
 	public void testMergeSort() {
 		Integer a[] = {8,8,7,8,9, 20, 1, -1, -50};
-		Integer expected[] = expected(a, direction);
-		Sort.mergeSort(a, direction);
+		Integer expected[] = expected(a, ascending);
+		Sort.mergeSort(a, ascending);
 		assertArrayEquals(expected, a);
 	}
 	
 	@Test
 	public void testHeapSort() {
 		Integer a[] = {8,8,7,8,9, 20, 1, -1, -50};
-		Integer expected[] = expected(a, direction);
-		Sort.heapSort(a, direction);
+		Integer expected[] = expected(a, ascending);
+		Sort.heapSort(a, ascending);
 		assertArrayEquals(expected, a);
 	}
 
@@ -46,15 +46,16 @@ public class SortTest {
 		return expected;
 	}
 	
-	private static final class AscendingComparator implements
+	private static final class IsLessThan implements
 	Comparator<Integer> {
 		@Override
 		public int compare(Integer o1, Integer o2) {
+			if (o1 < o2)
+				return 1;
+			
 			if (o1 == o2)
 				return 0;
 			
-			if (o2 > o1)
-				return 1;
 			
 			return -1;
 		}
