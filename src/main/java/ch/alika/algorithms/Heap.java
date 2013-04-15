@@ -42,18 +42,18 @@ public class Heap<T> {
 	}
 
 	private void heapify(int i) {
-		int selected = i;
+		int highest = i;
 		int l = left(i);
 		int r = right(i);
-		if ( isInHeap(l) && isBetter(data[l],data[i]) )
-			selected = l;
+		if ( isInHeap(l) && isHigherPriority(data[l],data[i]) )
+			highest = l;
 		
-		if ( isInHeap(r) && isBetter(data[r],data[selected]) )
-			selected = r;
+		if ( isInHeap(r) && isHigherPriority(data[r],data[highest]) )
+			highest = r;
 		
-		if (selected != i) {
-			swap(selected,i);
-			heapify(selected);
+		if (highest != i) {
+			swap(highest,i);
+			heapify(highest);
 		}
 		
 	}
@@ -62,7 +62,7 @@ public class Heap<T> {
 		return i <= lastHeapIndex; 
 	}
 
-	private boolean isBetter(T t1, T t2) {
+	private boolean isHigherPriority(T t1, T t2) {
 		return comparator.compare(t1,t2) == 1;
 	}
 

@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class SortTest {
-	private Comparator<Integer> ascending = new IsLessThan();
+	private Comparator<Integer> descending = new IsLessThan();
 
 	@Before
 	public void setUp() throws Exception {
@@ -19,24 +19,24 @@ public class SortTest {
 	@Test
 	public void testInsertionSort() {
 		Integer a[] = {4,8,7,8,9, 20, 1, -1, -50, 90, 100};
-		Integer expected[] = expected(a, ascending);
-		Sort.insertionSort(a, ascending);
+		Integer expected[] = expected(a, descending);
+		Sort.insertionSort(a, descending);
 		assertArrayEquals(expected, a);
 	}
 
 	@Test
 	public void testMergeSort() {
 		Integer a[] = {8,8,7,8,9, 20, 1, -1, -50};
-		Integer expected[] = expected(a, ascending);
-		Sort.mergeSort(a, ascending);
+		Integer expected[] = expected(a, descending);
+		Sort.mergeSort(a, descending);
 		assertArrayEquals(expected, a);
 	}
 	
 	@Test
 	public void testHeapSort() {
 		Integer a[] = {8,8,7,8,9, 20, 1, -1, -50};
-		Integer expected[] = expected(a, ascending);
-		Sort.heapSort(a, ascending);
+		Integer expected[] = expected(a, descending);
+		Sort.heapSort(a, descending);
 		assertArrayEquals(expected, a);
 	}
 
