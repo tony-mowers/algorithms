@@ -31,6 +31,14 @@ public class SortTest {
 		Sort.mergeSort(a, direction);
 		assertArrayEquals(expected, a);
 	}
+	
+	@Test
+	public void testHeapSort() {
+		Integer a[] = {8,8,7,8,9, 20, 1, -1, -50};
+		Integer expected[] = expected(a, direction);
+		Sort.heapSort(a, direction);
+		assertArrayEquals(expected, a);
+	}
 
 	private static Integer[] expected(Integer[] a, Comparator<Integer> direction) {
 		Integer expected[] = Arrays.copyOf(a, a.length);

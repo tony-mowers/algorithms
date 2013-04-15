@@ -20,6 +20,11 @@ public class Sort {
 	public static <T> void mergeSort(T[] a, Comparator<T> c) {
 		mergeSort(a, c, 0, a.length - 1);
 	}
+	
+	public static <T> void heapSort(T[] a, Comparator<T> c) {
+		Heap<T> heap = new Heap<T>(a,c);
+		heap.sort();
+	}
 
 	private static <T> void mergeSort(T[] a, Comparator<T> c, int p, int r) {
 		if (p < r) {
@@ -43,4 +48,5 @@ public class Sort {
 			}
 		}
 	}
+
 }
