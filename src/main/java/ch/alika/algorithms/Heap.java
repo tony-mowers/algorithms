@@ -43,13 +43,13 @@ public class Heap<T> {
 
 	private void heapify(int i) {
 		int highest = i;
-		int l = left(i);
-		int r = right(i);
-		if ( isInHeap(l) && isHigherPriority(data[l],data[i]) )
-			highest = l;
+		int leftIndex = leftChildIndex(i);
+		int rightIndex = rightChildIndex(i);
+		if ( isInHeap(leftIndex) && isHigherPriority(data[leftIndex],data[i]) )
+			highest = leftIndex;
 		
-		if ( isInHeap(r) && isHigherPriority(data[r],data[highest]) )
-			highest = r;
+		if ( isInHeap(rightIndex) && isHigherPriority(data[rightIndex],data[highest]) )
+			highest = rightIndex;
 		
 		if (highest != i) {
 			swap(highest,i);
@@ -66,11 +66,11 @@ public class Heap<T> {
 		return comparator.compare(t1,t2) == 1;
 	}
 
-	private int right(int i) {
+	private int rightChildIndex(int i) {
 		return (i + 1)*2;
 	}
 
-	private int left(int i) {
+	private int leftChildIndex(int i) {
 		return (i + 1)*2 - 1;
 	}
 }
