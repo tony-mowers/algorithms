@@ -45,10 +45,10 @@ public class Heap<T> {
 		int highest = i;
 		int leftIndex = leftChildIndex(i);
 		int rightIndex = rightChildIndex(i);
-		if ( isInHeap(leftIndex) && isHigherPriority(data[leftIndex],data[i]) )
+		if ( isHigherPriorityItem(i,leftIndex) )
 			highest = leftIndex;
 		
-		if ( isInHeap(rightIndex) && isHigherPriority(data[rightIndex],data[highest]) )
+		if ( isHigherPriorityItem(highest,rightIndex) )
 			highest = rightIndex;
 		
 		if (highest != i) {
@@ -62,8 +62,8 @@ public class Heap<T> {
 		return i <= lastHeapIndex; 
 	}
 
-	private boolean isHigherPriority(T t1, T t2) {
-		return comparator.compare(t1,t2) == 1;
+	private boolean isHigherPriorityItem(int referenceIndex, int index) {
+		return isInHeap(index) && comparator.compare(data[index],data[referenceIndex]) == 1;
 	}
 
 	private int rightChildIndex(int i) {
