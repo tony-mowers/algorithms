@@ -19,7 +19,7 @@ public class HeapTest {
         Integer data[] = { 2, 8, 9, 37, 9 };
         Heap<Integer> heap = new Heap<Integer>(data, descending);
         assertEquals(5, heap.size());
-        assertEquals((Integer) 2, heap.top());
+        assertEquals((Integer) 2, heap.peek());
         assertEquals((Integer) 2, heap.pop());
         assertEquals(4, heap.size());
         assertEquals((Integer) 8, heap.pop());

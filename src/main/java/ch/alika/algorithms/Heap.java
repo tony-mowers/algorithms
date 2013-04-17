@@ -18,7 +18,7 @@ public class Heap<T> {
         return lastHeapIndex + 1;
     }
 
-    public T top() {
+    public T peek() {
         if (size() < 1)
             throw new HeapUnderflowException();
 
