@@ -17,9 +17,11 @@ public class Sort {
 	}
 
 	
-	public static <T> void heapSort(T[] a, Comparator<T> c) {
-		Heap<T> heap = new Heap<T>(a,c);
-		heap.sort();
+	public static <T> void heapSort(T[] data, Comparator<T> c) {
+		Heap<T> heap = new Heap<T>(data,c);
+		while (heap.size() > 1) {
+			data[heap.size() - 1] = heap.pop();
+		}
 	}
 	
 	public static <T> void mergeSort(T[] a, Comparator<T> c) {

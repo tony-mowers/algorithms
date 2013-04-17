@@ -14,13 +14,6 @@ public class Heap<T> {
 		buildHeap();
 	}
 
-	public void sort() {
-		while (lastHeapIndex >= 1) {
-			swap(0, lastHeapIndex);
-			lastHeapIndex--;
-			heapify(0);
-		}
-	}
 
 	private void swap(int i, int j) {
 		T temp = data[i];
@@ -76,5 +69,27 @@ public class Heap<T> {
 
 	private int leftChildIndex(int i) {
 		return (i + 1) * 2 - 1;
+	}
+
+	public int size() {
+		return lastHeapIndex + 1;
+	}
+
+	public T top() {
+		if (size() < 1)
+			throw new HeapUnderflowException();
+		
+		return data[0];
+	}
+
+	public T pop() {
+		if (size() < 1)
+			throw new HeapUnderflowException();
+		
+		T top = data[0];
+		data[0] = data[lastHeapIndex--];
+		heapify(0);
+		
+		return top;
 	}
 }
