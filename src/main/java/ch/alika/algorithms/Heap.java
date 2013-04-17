@@ -14,6 +14,28 @@ public class Heap<T> {
         buildHeap();
     }
 
+    public int size() {
+        return lastHeapIndex + 1;
+    }
+
+    public T top() {
+        if (size() < 1)
+            throw new HeapUnderflowException();
+
+        return data[0];
+    }
+
+    public T pop() {
+        if (size() < 1)
+            throw new HeapUnderflowException();
+
+        T top = data[0];
+        data[0] = data[lastHeapIndex--];
+        heapify(0);
+
+        return top;
+    }
+    
     private void swap(int i, int j) {
         T temp = data[i];
         data[i] = data[j];
@@ -70,25 +92,5 @@ public class Heap<T> {
         return (parentIndex + 1) * 2 - 1;
     }
 
-    public int size() {
-        return lastHeapIndex + 1;
-    }
-
-    public T top() {
-        if (size() < 1)
-            throw new HeapUnderflowException();
-
-        return data[0];
-    }
-
-    public T pop() {
-        if (size() < 1)
-            throw new HeapUnderflowException();
-
-        T top = data[0];
-        data[0] = data[lastHeapIndex--];
-        heapify(0);
-
-        return top;
-    }
+    
 }
