@@ -62,12 +62,12 @@ public class Heap<T> {
         return (childIndex + 1) / 2 - 1;
     }
 
-    private int rightChildIndex(int i) {
-        return (i + 1) * 2;
+    private int rightChildIndex(int parentIndex) {
+        return (parentIndex + 1) * 2;
     }
 
-    private int leftChildIndex(int i) {
-        return (i + 1) * 2 - 1;
+    private int leftChildIndex(int parentIndex) {
+        return (parentIndex + 1) * 2 - 1;
     }
 
     public int size() {
